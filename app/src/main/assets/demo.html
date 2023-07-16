@@ -1,0 +1,85 @@
+<html>
+<head>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0">
+    <style>
+        button {
+            width :100%;
+            height :20%
+        }
+
+        body {
+          background-color: #ffff00; /* 使用十六進位碼指定紅色背景 */
+        }
+    </style>
+
+</head>
+<body id="main" class="box1">
+
+<div background->
+    <button id="rewarded" class="rewarded">
+        獎勵廣告
+    </button>
+
+    <button id="interstitial" class="interstitial">
+        插入廣告
+    </button>
+    <button id="red">
+        背景紅色
+    </button>
+    <button id="green">
+        背景綠色
+    </button>
+    <div id ="content">內容</div>
+</div>
+<script>
+        const rewarded = document.getElementById("rewarded");
+        rewarded.addEventListener("click", rewardedAction);
+
+        const interstitial = document.getElementById("interstitial");
+        interstitial.addEventListener("click", interstitialAction);
+
+        const content = document.getElementById("content");
+
+        const main = document.getElementById("main");
+
+        const red = document.getElementById("red");
+        red.addEventListener("click", setBackgroundColorRed);
+
+        const green = document.getElementById("green");
+        green.addEventListener("click", setBackgroundColorGreen);
+
+        function rewardedAction() {
+        content.innerHTML = "rewardedAction"
+          if(typeof(appJsInterface) !== 'undefined'){
+            appJsInterface.showRewardedAd();
+          }
+        }
+
+        function interstitialAction() {
+        content.innerHTML = "interstitialAction"
+          if(typeof(appJsInterface) !== 'undefined'){
+             appJsInterface.showInterstitialAd();
+          }
+        }
+
+        function setBackgroundColorRed() {
+        content.innerHTML = "setMainLayoutBackgroundColor"
+        main.style.backgroundColor = 'red';
+          if(typeof(appJsInterface) !== 'undefined'){
+             appJsInterface.setMainLayoutBackgroundColor(255,0,0);
+
+          }
+        }
+
+        function setBackgroundColorGreen() {
+        content.innerHTML = "setMainLayoutBackgroundColor"
+        main.style.backgroundColor = '#00FF00';
+          if(typeof(appJsInterface) !== 'undefined'){
+             appJsInterface.setMainLayoutBackgroundColor(0,255,0);
+
+          }
+        }
+
+    </script>
+</body>
+</html>
